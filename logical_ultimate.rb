@@ -92,7 +92,8 @@ def game_word aleatorio, tentativas, balanceamento, erro, nivel
 	chutes = []
 	erro = game_num aleatorio, tentativas, erro
 	if erro >= chances_dadas
-		chegou_ao_fim
+		
+		erro = 10
 	else
 		proxima_fase
 		palavra_secreta = escolhendo_palavra_secreta balanceamento
@@ -161,28 +162,35 @@ def jogar
 			tentativas = 5
 			aleatorio = 10
 			erros = game_num aleatorio, tentativas, erro
+			fora_do_game erros, tentativas
+			chegou_ao_fim
 		when nivel = 2
 			tentativas = 3
 			aleatorio = 20
 			erros = game_num aleatorio, tentativas, erro
+			fora_do_game erros, tentativas
+			chegou_ao_fim
 		when nivel = 3
 			tentativas = 5
 			aleatorio = 30 
 			balanceamento = "dicionario4.txt"
 			erros = game_word aleatorio, tentativas, balanceamento, erro, nivel
 			fora_do_game erros, tentativas
+			chegou_ao_fim
 		when nivel = 4
 			tentativas = 7
 			aleatorio = 40
 			balanceamento = "dicionario5.txt"
 			erros = game_word aleatorio, tentativas, balanceamento, erro, nivel
 			fora_do_game erros, tentativas
+			chegou_ao_fim
 		when nivel = 5
 			tentativas = 7
 			aleatorio = 50
 			balanceamento = "dicionario7.txt"
 			erros = game_word aleatorio, tentativas, balanceamento, erro, nivel
 			fora_do_game erros, tentativas
+			chegou_ao_fim
 		end
 		pontuaçao_player = calculo_pontuaçao erros
 		score_registrado pontuaçao_player

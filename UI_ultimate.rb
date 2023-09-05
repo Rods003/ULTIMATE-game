@@ -114,6 +114,7 @@ def elimina_game
 end
 
 def chegou_ao_fim
+	puts "\n\n"
 	puts "THE END"
 end
 
