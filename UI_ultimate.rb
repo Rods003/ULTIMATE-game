@@ -44,7 +44,38 @@ def proxima_fase
 	puts "Parabéns, se você chegou até aqui significa que você superou o primeiro desafio!"
 	puts "\n"
 	puts "Agora, vamos ver se você tem o que é preciso para passar da segunda etapa..."
-	puts "Cuidado para não ser enforcado hehehe"
+	puts "Salve-se da FORCA!"
+end
+
+def desenha_forca erro
+	cabeca = "   "
+    corpo = " "
+    pernas = "   "
+    bracos = "   "
+    if erro >= 1
+        cabeca = "(_)"
+    end
+    if erro >= 2
+        bracos = " | "
+        corpo = "|"
+    end
+    if erro >= 3
+        bracos = "/|\\"
+    end
+    if erro >= 4
+        pernas = "/ \\"
+    end
+
+    puts "  _______       "
+    puts " |/      |      "
+    puts " |      #{cabeca}  "
+    puts " |      #{bracos}  "
+    puts " |       #{corpo}  "
+    puts " |      #{pernas}  "
+    puts " |              "
+    puts "_|___           "
+    puts
+
 end
 
 def embaralhando_palavra_secreta
@@ -66,7 +97,7 @@ def cabecalho_chute erro, chutes
 	puts "\n\n"
 	puts "Erros até agora #{erro}..."
 	puts "Seus chutes até agora foram: #{chutes}"
-	puts "\n\n"
+	puts "\n"
 end
 
 def palpite_repetido
@@ -76,11 +107,12 @@ end
 
 
 def quantidade_letra marca_letra
-	puts "Essa letra aparece #{marca_letra} vezes na nossa palavra secreta!"
+	puts "\n\n"
+	puts "***Essa letra aparece #{marca_letra} vezes na nossa palavra secreta!***"
 end
 
 def pistas_mascara mascara_chutes
-	puts "Até agora temos as seguintes pistas: #{mascara_chutes}"
+	puts "--- Até agora temos as seguintes pistas: #{mascara_chutes} ---"
 end
 
 def mensagem_acerto
@@ -100,12 +132,24 @@ end
 
 def mensagem_erro
 	puts "\n"
-	puts "Errado! Não desista! ;)"
+	puts "Errado!"
 end
 
 def mensagem_campeao
 	puts "\n"
 	puts "PARABÉNS VOCÊ É O CAMPEÃO DO ULTIMATE GAME!"
+	puts
+    puts "       ___________      "
+    puts "      '._==_==_=_.'     "
+    puts "      .-\\:      /-.    "
+    puts "     | (|:.     |) |    "
+    puts "      '-|:.     |-'     "
+    puts "        \\::.    /      "
+    puts "         '::. .'        "
+    puts "           ) (          "
+    puts "         _.' '._        "
+    puts "        '-------'       "
+    puts
 end
 
 def elimina_game

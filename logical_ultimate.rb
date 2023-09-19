@@ -18,7 +18,7 @@ def game_num aleatorio, tentativas, erro
 	chutes = []
 
 	numero_sorteado = sorteia_numero aleatorio
-	#puts numero_sorteado
+	puts numero_sorteado
 
 	while erro < chances_dadas
 		palpite_dado = valida_chute_num erro, chutes
@@ -36,7 +36,6 @@ def game_num aleatorio, tentativas, erro
 			end
 		end
 		if erro >= chances_dadas
-			elimina_game
 			break
 		end
 	end
@@ -77,6 +76,7 @@ end
 
 def valida_chute_word erro, chutes 
 	cabecalho_chute erro, chutes
+	desenha_forca erro
 	loop do
 		chute_forca = pede_tentativa
 		if chutes.include? chute_forca
@@ -92,12 +92,11 @@ def game_word aleatorio, tentativas, balanceamento, erro, nivel
 	chutes = []
 	erro = game_num aleatorio, tentativas, erro
 	if erro >= chances_dadas
-		
-		erro = 10
+		erro = tentativas
 	else
 		proxima_fase
 		palavra_secreta = escolhendo_palavra_secreta balanceamento
-		#puts palavra_secreta
+		puts palavra_secreta
 		
 
 		while erro < chances_dadas
@@ -139,9 +138,10 @@ def fora_do_game erros, tentativas
 	end
 end
 
-def calculo_pontuaçao erros
+def calculo_pontuaçao nivel, erros, tentativas, pontos_rodada
 	penalidade = erros.to_i*(10)
-	pontos_rodada = 100 - penalidade
+	bonus = tentativas*(10)
+	pontos_feitos = pontos_rodada + ((bonus - penalidade) * nivel)
 end
 
 def game_over nome, nivel, erros, tentativas
@@ -155,6 +155,7 @@ def jogar
 	nome = nome_do_player
 	nivel = escolher_dificuldade
 	erro = 0
+	pontos_rodada = 0
 
 	loop do
 		case nivel
@@ -192,7 +193,9 @@ def jogar
 			fora_do_game erros, tentativas
 			chegou_ao_fim
 		end
-		pontuaçao_player = calculo_pontuaçao erros
+		puts erros
+		puts tentativas
+		pontuaçao_player = calculo_pontuaçao nivel, erros, tentativas, pontos_rodada
 		score_registrado pontuaçao_player
 
 		if game_over nome, nivel, erros, tentativas
@@ -200,6 +203,7 @@ def jogar
 		else
 			if nivel < 5 && erros < tentativas
 				nivel += 1
+				pontos_rodada += pontuaçao_player
 			end
 		end
 	end
