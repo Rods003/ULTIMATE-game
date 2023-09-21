@@ -1,4 +1,5 @@
 require_relative "UI_ultimate"
+require_relative "rank_ultimate"
 
 def valida_chute_num erro, chutes 
 	cabecalho_chute erro, chutes
@@ -18,7 +19,6 @@ def game_num aleatorio, tentativas, erro
 	chutes = []
 
 	numero_sorteado = sorteia_numero aleatorio
-	puts numero_sorteado
 
 	while erro < chances_dadas
 		palpite_dado = valida_chute_num erro, chutes
@@ -96,7 +96,6 @@ def game_word aleatorio, tentativas, balanceamento, erro, nivel
 	else
 		proxima_fase
 		palavra_secreta = escolhendo_palavra_secreta balanceamento
-		puts palavra_secreta
 		
 
 		while erro < chances_dadas
@@ -152,6 +151,7 @@ end
 
 def jogar
 	dar_boas_vindas
+	campeao_ultimate le_scoreboard
 	nome = nome_do_player
 	nivel = escolher_dificuldade
 	erro = 0
@@ -167,36 +167,35 @@ def jogar
 			chegou_ao_fim
 		when nivel = 2
 			tentativas = 3
-			aleatorio = 20
+			aleatorio = 10
 			erros = game_num aleatorio, tentativas, erro
 			fora_do_game erros, tentativas
 			chegou_ao_fim
 		when nivel = 3
 			tentativas = 5
-			aleatorio = 30 
+			aleatorio = 15 
 			balanceamento = "dicionario4.txt"
 			erros = game_word aleatorio, tentativas, balanceamento, erro, nivel
 			fora_do_game erros, tentativas
 			chegou_ao_fim
 		when nivel = 4
-			tentativas = 7
-			aleatorio = 40
+			tentativas = 5
+			aleatorio = 20
 			balanceamento = "dicionario5.txt"
 			erros = game_word aleatorio, tentativas, balanceamento, erro, nivel
 			fora_do_game erros, tentativas
 			chegou_ao_fim
 		when nivel = 5
-			tentativas = 7
-			aleatorio = 50
+			tentativas = 5
+			aleatorio = 20
 			balanceamento = "dicionario7.txt"
 			erros = game_word aleatorio, tentativas, balanceamento, erro, nivel
 			fora_do_game erros, tentativas
 			chegou_ao_fim
 		end
-		puts erros
-		puts tentativas
 		pontuaçao_player = calculo_pontuaçao nivel, erros, tentativas, pontos_rodada
 		score_registrado pontuaçao_player
+		campeao_superado le_scoreboard, nome, pontuaçao_player
 
 		if game_over nome, nivel, erros, tentativas
 			break

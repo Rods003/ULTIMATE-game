@@ -1,9 +1,16 @@
 def dar_boas_vindas
 	puts "\n\n"
-	puts "********* SEJAM BEM VINDOS AO *********"
-	puts "*********** ULTIMATE GAME!!! **********"
+	puts "///////// SEJAM BEM VINDOS AO \\\\\\\\\\\\\\\\\\"
+	puts "///////// ULTIMATE GAME!!! \\\\\\\\\\\\\\\\\\"
 	puts "\n\n"
 	puts "Vambora ver se você está a altura do desafio!"
+end
+
+def campeao_ultimate dados 
+	puts "\n"
+	puts "***   O nosso atual campeão é:   ***"
+	puts "      #{dados[0]} com #{dados[1]} pontos !!!"
+	puts "\n\n"
 end
 
 def nome_do_player
@@ -26,6 +33,7 @@ def sorteia_numero aleatorio
 	puts "\n\n"
 	puts "***Estamos sorteando um número para o seu desafio...***"
 	numero_sorteado = rand(aleatorio)
+	puts "\n"
 	puts "Número escolhido! Ele está entre 0 e #{aleatorio.to_i}"
 	puts "Bora começar..."
 	numero_sorteado
@@ -94,7 +102,7 @@ def pede_tentativa
 end
 
 def cabecalho_chute erro, chutes
-	puts "\n\n"
+	puts "\n"
 	puts "Erros até agora #{erro}..."
 	puts "Seus chutes até agora foram: #{chutes}"
 	puts "\n"
@@ -169,9 +177,11 @@ end
 
 def jogar_novamente? nome, nivel, erros, tentativas
 	if nivel == 5 || erros == tentativas
+		puts "\n"
 		puts "#{nome}, você deseja jogar novamente? (S/N)"
 		novo_round = gets.strip.upcase
 	else
+		puts "\n"
 		puts "Gostaria de um desafio maior #{nome}? (S/N)"
 		novo_round = gets.strip.upcase
 	end
